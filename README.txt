@@ -9,8 +9,7 @@ Contact: uqcponti@uq.edu.au
 Unofficial fork of DSVL, a wrapper around Microsoft's DirectShow multimedia framework/API. 
 Exposes brightness, contrast and sharpness of video streams to read/write through the public interface.
 
-Note that a legacy version of the Windows SDK and precompiling of certain C++ distributions are required to build it - 
-see the project's compliation settings.
+Note that a legacy version of the Windows SDK and precompiling of certain C++ distributions are required to build it - see the project's compliation settings.
 
 http://en.wikipedia.org/wiki/DirectShow
 http://sourceforge.net/projects/dsvideolib/
