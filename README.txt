@@ -1,6 +1,27 @@
 ========================================================================
 PROJECT: DirectShow Video Processing Library
-Version: 0.0.8c (10/26/2005)
+Version: 0.0.8.1 (21/04/2014)
+========================================================================
+Author:  Chris Ponticello, University of Queensland
+Contact: uqcponti@uq.edu.au
+=======================================================================
+
+Unofficial fork of DSVL, a wrapper around Microsoft's DirectShow multimedia framework/API. 
+Exposes brightness, contrast and sharpness of video streams to read/write through the public interface.
+
+Note that a legacy version of the Windows SDK and precompiling of certain C++ distributions are required to build it - 
+see the project's compliation settings.
+
+http://en.wikipedia.org/wiki/DirectShow
+http://sourceforge.net/projects/dsvideolib/
+
+Original README.txt below
+
+
+
+========================================================================
+PROJECT: DirectShow Video Processing Library
+Version: 0.0.8 (05/04/2005)
 ========================================================================
 Author:  Thomas Pintaric, Vienna University of Technology
 Contact: pintaric@ims.tuwien.ac.at http://ims.tuwien.ac.at/~thomas
