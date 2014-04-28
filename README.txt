@@ -1,6 +1,6 @@
 ========================================================================
 PROJECT: DirectShow Video Processing Library
-Version: 0.0.8.1 (21/04/2014)
+Version: 0.0.8c (21/04/2014)
 ========================================================================
 Author:  Chris Ponticello, University of Queensland
 Contact: uqcponti@uq.edu.au
