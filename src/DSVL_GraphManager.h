@@ -32,12 +32,6 @@
 #include <streams.h>
 #include <atlcomcli.h>	// CComPtr
 #include <comutil.h>	// _bstr_t
-
-#define __IDxtCompositor_INTERFACE_DEFINED__
-#define __IDxtAlphaSetter_INTERFACE_DEFINED__
-#define __IDxtJpeg_INTERFACE_DEFINED__
-#define __IDxtKey_INTERFACE_DEFINED__
-
 #include "Qedit.h"
 #include <map>
 using namespace std;
@@ -247,15 +241,17 @@ public:
 	// decrements the instance counter
 
 protected:
-	// display property pages
-	HRESULT ShowFilterProperties(HWND hWnd = NULL);
-	HRESULT ShowPinProperties(HWND hWnd = NULL);
 
 private:
 	HRESULT BuildGraphFromXMLHandle(TiXmlHandle xml_h);
 
 // ------------------------------------------------------------------------
 public:
+
+	// display property pages
+	HRESULT ShowFilterProperties(HWND hWnd = NULL);
+	HRESULT ShowPinProperties(HWND hWnd = NULL);
+
 	// valid types for (long property): CameraControlProperty, VideoProcAmpProperty
 	HRESULT GetCameraParameterRange(CP_INTERFACE interface_type,  
 									long property,
@@ -265,8 +261,24 @@ public:
 									long *pDefault,
 									long *pCapsFlags);
 
+	/*//unneeded
+	//new 
+	HRESULT getVideoProcAmpSpecs(long property,
+									long *pMin,
+									long *pMax,
+									long *pSteppingDelta,
+									long *pDefault,
+									long *pCapsFlags);
+	*/
+
 	HRESULT GetCameraParameter(CP_INTERFACE interface_type, long Property, long *lValue, bool *bAuto);
 	HRESULT SetCameraParameter(CP_INTERFACE interface_type, long Property, long lValue, bool bAuto);
+
+	/*//unneeded
+	//new 
+	HRESULT getVideoProcAmpValue(long Property, long *lValue, bool *bAuto);
+	HRESULT setVideoProcAmpValue(long Property, long lValue, bool bAuto);
+	*/
 
 protected:
 	long GetCameraPropertyAUTOFlag(CP_INTERFACE interface_type, bool bAUTO = true);

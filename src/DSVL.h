@@ -28,7 +28,7 @@
 *  Vienna, Austria.
 * ========================================================================*/
 
-#define DSVL_VERSION 0x00000802 // 0.0.8b
+#define DSVL_VERSION 0x00000804 // 0.0.8d
 
 #ifdef DSVL_EXPORTS
 #define DSVL_API __declspec(dllexport)
@@ -52,6 +52,13 @@ struct MemoryBufferHandle
 };
 
 #endif
+
+//new
+// camera setting enum maps to identical enum in Reactivision's CameraEngine.h
+typedef enum _CAMERA_SETTING { BRIGHTNESS, GAIN, SHUTTER, EXPOSURE, SHARPNESS, FOCUS, GAMMA, CONTRAST };
+
+// camera setting spec enum defines which specification getVideoProcAmpSpec() returns
+typedef enum _CAMERA_SETTING_SPEC { PMIN, PMAX, PSTEPPINGDELTA, PDEFAULT, PCAPSFLAGS };
 
 #define _INVALID_TIMESTAMP 0;
 // ------------------------------------------------------------
@@ -93,6 +100,21 @@ public:
 	HRESULT Pause();
 	HRESULT Stop(bool forcedStop = false);
 
+	HRESULT ShowFilterProperties();
+
+	//new
+	void reacTIVision_resetParams();
+	int reacTIVision_getCameraSettingStep(int mode);
+	int reacTIVision_getMinCameraSetting(int mode);
+	int reacTIVision_getMaxCameraSetting(int mode);
+	int reacTIVision_getCameraSetting(int mode);
+	bool reacTIVision_setCameraSetting(int mode, int value);
+	bool reacTIVision_setCameraSettingAuto(int mode, bool flag);
+
 private:
 	void* p_graphManager;
+
+	//new
+	long modeToVideoProcAmpProperty(int mode);
+	long getVideoProcAmpSpec(long videoProcAmpProperty, _CAMERA_SETTING_SPEC spec);
 };

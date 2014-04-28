@@ -124,4 +124,115 @@ HRESULT DSVL_VideoSource::Stop(bool forcedStop)
 	return((GM(p_graphManager))->Stop(forcedStop));
 }
 
+HRESULT DSVL_VideoSource::ShowFilterProperties()
+{
+	return((GM(p_graphManager))->ShowFilterProperties());
+}
 
+///////////////
+//new
+//////////////
+
+/* 
+	Maps Reactivision camera control modes to VideoProcAmp settings.
+	 Physical settings fall under tagCameraControlProperty, did not implement
+*/
+long DSVL_VideoSource::modeToVideoProcAmpProperty(int mode) {
+	switch (mode) {
+		case _CAMERA_SETTING::BRIGHTNESS: 
+			return tagVideoProcAmpProperty::VideoProcAmp_Brightness;
+		case _CAMERA_SETTING::GAIN:
+			return tagVideoProcAmpProperty::VideoProcAmp_Gain;
+		case _CAMERA_SETTING::SHUTTER:
+			return -1; //not implementing
+		case _CAMERA_SETTING::EXPOSURE:
+			return -1; //not implementing
+		case _CAMERA_SETTING::SHARPNESS:
+			return tagVideoProcAmpProperty::VideoProcAmp_Sharpness;
+		case _CAMERA_SETTING::FOCUS:
+			return -1; //not implementing
+		case _CAMERA_SETTING::GAMMA:
+			return tagVideoProcAmpProperty::VideoProcAmp_Gamma;
+		case _CAMERA_SETTING::CONTRAST:
+			return tagVideoProcAmpProperty::VideoProcAmp_Contrast;
+	}
+}
+
+long DSVL_VideoSource::getVideoProcAmpSpec(long videoProcAmpProperty, _CAMERA_SETTING_SPEC spec) {
+	long pMin, pMax, pSteppingDelta, pDefault, pCapsFlags;
+
+	(GM(p_graphManager))->GetCameraParameterRange(CP_VideoProcAmp, videoProcAmpProperty,
+		&pMin, &pMax, &pSteppingDelta, &pDefault, &pCapsFlags);
+
+	switch (spec) {
+		case _CAMERA_SETTING_SPEC::PMIN: return pMin;
+		case _CAMERA_SETTING_SPEC::PMAX: return pMax;
+		case _CAMERA_SETTING_SPEC::PDEFAULT: return pDefault;
+		case _CAMERA_SETTING_SPEC::PSTEPPINGDELTA: return pSteppingDelta;
+		case _CAMERA_SETTING_SPEC::PCAPSFLAGS: return pCapsFlags;
+		default: return -1;
+	}
+}
+
+void DSVL_VideoSource::reacTIVision_resetParams()
+{
+	(GM(p_graphManager))->ResetCameraParameters();
+}
+
+int DSVL_VideoSource::reacTIVision_getCameraSettingStep(int mode) {
+	long videoProcAmpProperty;
+	
+	videoProcAmpProperty = modeToVideoProcAmpProperty(mode);
+	if (videoProcAmpProperty==-1) return 0;
+
+	return (int)(getVideoProcAmpSpec(videoProcAmpProperty,_CAMERA_SETTING_SPEC::PSTEPPINGDELTA));
+}
+
+int DSVL_VideoSource::reacTIVision_getMinCameraSetting(int mode) {
+	long videoProcAmpProperty;
+	
+	videoProcAmpProperty = modeToVideoProcAmpProperty(mode);
+	if (videoProcAmpProperty==-1) return 0;
+
+	return (int)(getVideoProcAmpSpec(videoProcAmpProperty,_CAMERA_SETTING_SPEC::PMIN));
+}
+
+int DSVL_VideoSource::reacTIVision_getMaxCameraSetting(int mode) {
+	long videoProcAmpProperty;
+	
+	videoProcAmpProperty = modeToVideoProcAmpProperty(mode);
+	if (videoProcAmpProperty==-1) return 0;
+
+	return (int)(getVideoProcAmpSpec(videoProcAmpProperty,_CAMERA_SETTING_SPEC::PMAX));
+}
+
+int DSVL_VideoSource::reacTIVision_getCameraSetting(int mode) {
+	long videoProcAmpProperty;
+	long lValue;
+	
+	videoProcAmpProperty = modeToVideoProcAmpProperty(mode);
+	if (videoProcAmpProperty==-1) return 0;
+
+	(GM(p_graphManager))->GetCameraParameter(CP_VideoProcAmp, videoProcAmpProperty, &lValue, (bool *)NULL);
+	return lValue;
+}
+
+bool DSVL_VideoSource::reacTIVision_setCameraSetting(int mode, int value) {
+	long videoProcAmpProperty;
+	
+	videoProcAmpProperty = modeToVideoProcAmpProperty(mode);
+	if (videoProcAmpProperty==-1) return 0;
+
+	return (GM(p_graphManager))->SetCameraParameter(CP_VideoProcAmp, videoProcAmpProperty, value, false);
+}
+
+bool DSVL_VideoSource::reacTIVision_setCameraSettingAuto(int mode, bool flag) {
+	long videoProcAmpProperty;
+	bool bAuto;
+	
+	videoProcAmpProperty = modeToVideoProcAmpProperty(mode);
+	if (videoProcAmpProperty==-1) return false;
+
+	(GM(p_graphManager))->GetCameraParameter(CP_VideoProcAmp, videoProcAmpProperty, (long *)NULL, &bAuto);
+	return bAuto;
+}

@@ -1,31 +1,54 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="DSVL"
 	ProjectGUID="{BFA16123-9EB6-4641-A33F-9FFD7511AD5D}"
 	RootNamespace="DsVideoLib"
-	SccProjectName=""
-	SccLocalPath="">
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory=".\Debug"
 			IntermediateDirectory=".\Debug"
 			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
 			UseOfATL="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			ATLMinimizesCRunTimeLibraryUsage="false"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="1"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)..\src&quot;;&quot;($DXSDK_DIR)include&quot;;&quot;($DXSDK_DIR)Extras\DirectShow\Samples\C++\DirectShow\Common&quot;;&quot;($DXSDK_DIR)Extras\DirectShow\Samples\C++\DirectShow\BaseClasses&quot;;&quot;$(ProjectDir)..\extlib\tinyxml&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)..\src&quot;;C:\SDK\DirectX\include;&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\Common&quot;;&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\BaseClasses&quot;;&quot;$(ProjectDir)..\extlib\tinyxml&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;DSVL_EXPORTS;TIXML_USE_STL"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -34,115 +57,152 @@
 				ProgramDataBaseFileName=".\Debug/"
 				BrowseInformationFile=""
 				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"/>
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386 /fixed:no"
-				AdditionalDependencies="strmbasd.lib comsupp.lib Quartz.lib winmm.lib tinyxmld_STL.lib"
-				OutputFile="$(ProjectDir)..\bin\$(ProjectName)d.dll"
-				Version="0.0.8"
-				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="&quot;($DXSDK_DIR)Extras\DirectShow\Samples\C++\DirectShow\BaseClasses\debug\&quot;;&quot;($DXSDK_DIR)Extras\DirectShow\Lib\x86&quot;;&quot;($DXSDK_DIR)lib\&quot;;&quot;$(ProjectDir)..\lib&quot;"
-				IgnoreDefaultLibraryNames="libmmt.lib, libircmt.lib"
-				GenerateDebugInformation="TRUE"
-				SubSystem="2"
-				ImportLibrary="$(ProjectDir)..\lib\$(ProjectName)d.lib"/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="_DEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_DEBUG"
-				Culture="1033"/>
+				Culture="1033"
+			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
+				Name="VCPreLinkEventTool"
+			/>
 			<Tool
-				Name="VCXMLDataGeneratorTool"/>
+				Name="VCLinkerTool"
+				AdditionalOptions="/MACHINE:I386 /fixed:no"
+				AdditionalDependencies="strmbasd.lib comsupp.lib comsuppw.lib Quartz.lib winmm.lib tinyxmld_STL.lib"
+				OutputFile="$(ProjectDir)..\bin\$(ProjectName)d.dll"
+				Version="0.0.8"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\BaseClasses\Common&quot;;&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\BaseClasses\Debug&quot;;C:\SDK\DirectX\lib;&quot;$(ProjectDir)..\lib&quot;"
+				IgnoreDefaultLibraryNames=""
+				GenerateDebugInformation="true"
+				SubSystem="2"
+				ImportLibrary="$(ProjectDir)..\lib\$(ProjectName)d.lib"
+			/>
 			<Tool
-				Name="VCWebDeploymentTool"/>
+				Name="VCALinkTool"
+			/>
 			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
+				Name="VCManifestTool"
+			/>
 			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory=".\Release"
 			IntermediateDirectory=".\Release"
 			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
-			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="2"
-			WholeProgramOptimization="TRUE">
+			WholeProgramOptimization="1"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="true"
+				SuppressStartupBanner="true"
+				TargetEnvironment="1"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="2"
-				GlobalOptimizations="TRUE"
 				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="TRUE"
+				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
-				OptimizeForProcessor="0"
-				AdditionalIncludeDirectories="&quot;$(ProjectDir)/../src&quot;;&quot;($DXSDK_DIR)include&quot;;&quot;($DXSDK_DIR)Extras\DirectShow\Samples\C++\DirectShow\Common&quot;;&quot;($DXSDK_DIR)Extras\DirectShow\Samples\C++\DirectShow\BaseClasses&quot;;&quot;$(ProjectDir)/../extlib/tinyxml&quot;"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)/../src&quot;;C:\SDK\DirectX\include;&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\Common&quot;;&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\BaseClasses&quot;;&quot;$(ProjectDir)/../extlib/tinyxml&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;DSVL_EXPORTS;TIXML_USE_STL"
-				StringPooling="TRUE"
+				StringPooling="true"
 				RuntimeLibrary="2"
-				EnableFunctionLevelLinking="TRUE"
+				EnableFunctionLevelLinking="true"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
-				WarningLevel="3"
-				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="3"/>
+				WarningLevel="0"
+				SuppressStartupBanner="true"
+				DebugInformationFormat="3"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalOptions="/MACHINE:I386 /LTCG"
-				AdditionalDependencies="msdmo.lib dmoguids.lib strmiids.lib dxguid.lib winmm.lib strmbase.lib comsupp.lib Quartz.lib tinyxml_STL.lib"
-				OutputFile="$(ProjectDir)..\bin\$(ProjectName).dll"
-				Version="0.0.8"
-				SuppressStartupBanner="TRUE"
-				AdditionalLibraryDirectories="&quot;($DXSDK_DIR)Extras\DirectShow\Samples\C++\DirectShow\BaseClasses\release\&quot;;&quot;($DXSDK_DIR)Extras\DirectShow\Lib\x86&quot;;&quot;($DXSDK_DIR)lib\&quot;;&quot;$(ProjectDir)..\lib&quot;"
-				ImportLibrary="$(ProjectDir)..\lib\$(ProjectName).lib"/>
-			<Tool
-				Name="VCMIDLTool"
-				PreprocessorDefinitions="NDEBUG"
-				MkTypLibCompatible="TRUE"
-				SuppressStartupBanner="TRUE"
-				TargetEnvironment="1"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="NDEBUG,_IMSC"
-				Culture="1033"/>
+				Culture="1033"
+			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
+				Name="VCPreLinkEventTool"
+			/>
 			<Tool
-				Name="VCXMLDataGeneratorTool"/>
+				Name="VCLinkerTool"
+				AdditionalOptions="/MACHINE:I386 /LTCG"
+				AdditionalDependencies="comsuppw.lib Strmbase.lib strmiids.lib winmm.lib comsupp.lib tinyxml_STL.lib Quartz.lib"
+				OutputFile="$(ProjectDir)..\bin\$(ProjectName).dll"
+				Version="0.0.8"
+				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="C:\SDK\DirectX\Lib;&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\Common&quot;;&quot;C:\Archivos de programa\Microsoft DirectX 9.0 SDK (April 2005)\Extras\DirectShow\Samples\C++\DirectShow\BaseClasses\Release&quot;;&quot;$(ProjectDir)..\lib&quot;"
+				ImportLibrary="$(ProjectDir)..\lib\$(ProjectName).lib"
+			/>
 			<Tool
-				Name="VCWebDeploymentTool"/>
+				Name="VCALinkTool"
+			/>
 			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
+				Name="VCManifestTool"
+			/>
 			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -150,49 +210,63 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
+			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
+			>
 			<File
-				RelativePath=".\DSVL.cpp">
+				RelativePath=".\DSVL.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DSVL_GraphManager.cpp">
+				RelativePath=".\DSVL_GraphManager.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DSVL_Helpers.cpp">
+				RelativePath=".\DSVL_Helpers.cpp"
+				>
 			</File>
 			<File
-				RelativePath=".\DSVL_PixelFormat.cpp">
+				RelativePath=".\DSVL_PixelFormat.cpp"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
-			Filter="h;hpp;hxx;hm;inl">
+			Filter="h;hpp;hxx;hm;inl"
+			>
 			<File
-				RelativePath=".\DSVL.h">
+				RelativePath=".\DSVL.h"
+				>
 			</File>
 			<File
-				RelativePath=".\DSVL_GraphManager.h">
+				RelativePath=".\DSVL_GraphManager.h"
+				>
 			</File>
 			<File
-				RelativePath=".\DSVL_Helpers.h">
+				RelativePath=".\DSVL_Helpers.h"
+				>
 			</File>
 			<File
-				RelativePath=".\DSVL_PixelFormat.h">
+				RelativePath=".\DSVL_PixelFormat.h"
+				>
 			</File>
 			<File
-				RelativePath=".\DSVL_PixelFormatTypes.h">
+				RelativePath=".\DSVL_PixelFormatTypes.h"
+				>
 			</File>
 		</Filter>
 		<File
-			RelativePath="..\LICENSE.txt">
+			RelativePath="..\LICENSE.txt"
+			>
 		</File>
 		<File
-			RelativePath="..\README.txt">
+			RelativePath="..\README.txt"
+			>
 		</File>
 	</Files>
 	<Globals>
 		<Global
 			Name="DevPartner_IsInstrumented"
-			Value="0"/>
+			Value="0"
+		/>
 	</Globals>
 </VisualStudioProject>

@@ -326,9 +326,9 @@ HRESULT FindCaptureDevice(IBaseFilter ** ppSrcFilter,
 	// CreateClassEnumerator will succeed, but pClassEnum will be NULL.
 	if (pClassEnum == NULL)
 	{
-		MessageBox(NULL,TEXT("No video capture device was detected.\r\n\r\n")
+		/*MessageBox(NULL,TEXT("No video capture device was detected.\r\n\r\n")
 			TEXT("You need at least one WDM video capture device, such as a USB WebCam.\r\n"),
-			TEXT("No Video Capture Hardware"), MB_OK | MB_ICONINFORMATION);
+			TEXT("No Video Capture Hardware"), MB_OK | MB_ICONINFORMATION);*/
 		return E_FAIL;
 	}
 

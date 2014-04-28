@@ -1,6 +1,6 @@
 /* ========================================================================
 *  PROJECT: DirectShow Video Processing Library (DSVL)
-*  Version: 0.0.8 (05/13/2005)
+*  Version: 0.0.8c (10/26/2005)
 *  ========================================================================
 *  Author:  Thomas Pintaric, Vienna University of Technology
 *  Contact: pintaric@ims.tuwien.ac.at http://ims.tuwien.ac.at/~thomas
@@ -183,7 +183,7 @@ DSVL_GraphManager::~DSVL_GraphManager()
   hr = ReleaseGraph();
 
   #ifdef _DEBUG
-	DbgOutString("*** DbgDumpObjectRegister:\n");
+	//DbgOutString("*** DbgDumpObjectRegister:\n");
 	DbgDumpObjectRegister();
   #endif
 }
@@ -259,10 +259,8 @@ HRESULT DSVL_GraphManager::DisableMemoryBuffer()
 
 	if(mb.size() > 0)
 	{
-		std::map<unsigned long, MemoryBufferEntry>::iterator iter;
-		for(iter = mb.begin();
-			iter != mb.end();
-			iter++)
+		std::map<unsigned long, MemoryBufferEntry>::iterator iter = mb.begin();
+		while(iter != mb.end())
 		{
 			// ignore use_count
 			(*iter).second.media_sample->Release();
@@ -325,6 +323,20 @@ HRESULT DSVL_GraphManager::GetCameraParameterRange(CP_INTERFACE interface_type,
 	return(E_INVALIDARG);
 }
 
+/*//unneeded
+//new
+HRESULT DSVL_GraphManager::getVideoProcAmpSpecs(long property,
+								long *pMin,
+								long *pMax,
+								long *pSteppingDelta,
+								long *pDefault,
+								long *pCapsFlags)
+{
+	if(!videoProcAmp) return(E_INVALIDARG);
+	return(videoProcAmp->GetRange(property,pMin,pMax,pSteppingDelta,pDefault,pCapsFlags));
+}
+*/
+
 // ----------------------------------------------------------------------------------------------------------
 HRESULT DSVL_GraphManager::GetCameraParameter(CP_INTERFACE interface_type, long Property, long *lValue, bool *bAuto)
 {
@@ -351,6 +363,19 @@ HRESULT DSVL_GraphManager::GetCameraParameter(CP_INTERFACE interface_type, long 
 	return(E_INVALIDARG);
 }
 
+/*//unneeded
+HRESULT DSVL_GraphManager::getVideoProcAmpValue(long Property, long *lValue, bool *bAuto)
+{
+	HRESULT hr;
+	long Flags = 0;
+
+	if(!videoProcAmp) return(E_INVALIDARG);
+	hr = videoProcAmp->Get(Property,lValue,&Flags);
+	(*bAuto) = (Flags == GetCameraPropertyAUTOFlag(CP_VideoProcAmp, true));
+	return(hr);
+}
+*/
+
 // ----------------------------------------------------------------------------------------------------------
 HRESULT DSVL_GraphManager::SetCameraParameter(CP_INTERFACE interface_type, long Property, long lValue, bool bAuto)
 {
@@ -373,6 +398,15 @@ HRESULT DSVL_GraphManager::SetCameraParameter(CP_INTERFACE interface_type, long 
 	// unknown interface_type
 	return(E_INVALIDARG);
 }
+
+/*//unneeded
+//new
+HRESULT DSVL_GraphManager::setVideoProcAmpValue(long Property, long lValue, bool bAuto)
+{
+	return(SetCameraParameter(CP_VideoProcAmp,Property,lValue,GetCameraPropertyAUTOFlag(CP_VideoProcAmp, bAuto)));
+}
+*/
+
 // ----------------------------------------------------------------------------------------------------------
 
 long DSVL_GraphManager::GetCameraPropertyAUTOFlag(CP_INTERFACE interface_type, bool bAUTO)
@@ -563,10 +597,8 @@ HRESULT WINAPI DSVL_GraphManager::SampleCB(double SampleTime, IMediaSample *pSam
 	CAutoLock cObjectLock(&m_CSec);
 	if(mb.size() > 0) // constantly clean up (mb)
 	{
-		std::map<unsigned long, MemoryBufferEntry>::iterator iter;
-		for(iter = mb.begin();
-			iter != mb.end();
-			/*iter++*/)
+		std::map<unsigned long, MemoryBufferEntry>::iterator iter = mb.begin();
+		while(iter != mb.end())
 		{
 			if((*iter).second.use_count == 0)
 			{
@@ -574,8 +606,11 @@ HRESULT WINAPI DSVL_GraphManager::SampleCB(double SampleTime, IMediaSample *pSam
 				std::map<unsigned long, MemoryBufferEntry>::iterator iter2 =
 					mb.erase(iter);
 				iter = iter2;
-			}else
+			}
+			else
+			{
 				iter++;
+			}
 		}
 	}
 
